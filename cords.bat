@@ -17,12 +17,20 @@ REM Download Swift Peak Hosting LTD
 echo Downloading Swift Peak Hosting LTD ...
 powershell -Command "Invoke-WebRequest -Uri %SwiftPeakHostingURL% -OutFile %ResourceDir%\SwiftPeakHosting.zip"
 
+REM Check if download was successful
+if errorlevel 1 (
+    echo Failed to download Swift Peak Hosting LTD. Please check the URL or your internet connection.
+    exit /B
+)
+
 REM Extract Swift Peak Hosting LTD
 echo Extracting Swift Peak Hosting LTD ...
 powershell -Command "Expand-Archive -Path %ResourceDir%\SwiftPeakHosting.zip -DestinationPath %ResourceDir% -Force"
 
 REM Remove ZIP
-del %ResourceDir%\SwiftPeakHosting.zip
+if exist %ResourceDir%\SwiftPeakHosting.zip (
+    del %ResourceDir%\SwiftPeakHosting.zip
+)
 
 REM Set Permissions
 echo Setting correct permissions...
