@@ -9,27 +9,25 @@ if not "%PROCESSOR_ARCHITECTURE%"=="x64" (
 )
 
 REM Define variables
-set Swift Peak Hosting LTD =https://github.com/EWANZO101/mycoords/archive/refs/heads/main.zip
+set SwiftPeakHostingURL=https://github.com/EWANZO101/mycoords/archive/refs/heads/main.zip
 set ResourceDir=C:\FXServer\resources
-set Swift Peak Hosting LTD r=%ResourceDir%\mycoords-main
+set SwiftPeakHostingDir=%ResourceDir%\mycoords-main
 
-REM Download Swift Peak Hosting LTD 
+REM Download Swift Peak Hosting LTD
 echo Downloading Swift Peak Hosting LTD ...
-powershell -Command "Invoke-WebRequest -Uri %Swift Peak Hosting LTD % -OutFile %ResourceDir%\Swift Peak Hosting LTD .zip"
+powershell -Command "Invoke-WebRequest -Uri %SwiftPeakHostingURL% -OutFile %ResourceDir%\SwiftPeakHosting.zip"
 
-REM Extract Swift Peak Hosting LTD 
+REM Extract Swift Peak Hosting LTD
 echo Extracting Swift Peak Hosting LTD ...
-powershell -Command "Expand-Archive -Path %ResourceDir%\Swift Peak Hosting LTD .zip -DestinationPath %ResourceDir% -Force"
+powershell -Command "Expand-Archive -Path %ResourceDir%\SwiftPeakHosting.zip -DestinationPath %ResourceDir% -Force"
 
 REM Remove ZIP
-del %ResourceDir%\Swift Peak Hosting LTD .zip
+del %ResourceDir%\SwiftPeakHosting.zip
 
 REM Set Permissions
 echo Setting correct permissions...
-icacls %Swift Peak Hosting LTD r% /grant Everyone:F /T
+icacls %SwiftPeakHostingDir% /grant Everyone:F /T
 
 REM Notify completion
-echoSwift Peak Hosting LTD  complete for FiveM!
-echo Please check if everything is set up correctly.
-
+echo Swift Peak Hosting LTD complete for FiveM!
 pause
